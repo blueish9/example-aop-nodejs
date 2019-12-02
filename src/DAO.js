@@ -1,8 +1,8 @@
-const Database = {
+const DAO = {
   // database access: query and retrieve the results here
-  executeTransaction(model, ...params) {
+  fetch(model, ...params) {
     return new model(...params)
   }
 }
 
-export default Database
+export default DAO

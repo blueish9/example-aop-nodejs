@@ -1,13 +1,13 @@
 import {Article, User} from './Model'
 import {Advised} from 'aspect.js'
-import Database from './Database'
+import DAO from './DAO'
 
 /*export default class Service {
   getUser({id, name}) {
     if (!Number.isInteger(id))
       return null
 
-    const user = Database.executeTransaction(User, id, name)
+    const user = DAO.fetch(User, id, name)
 
     return JSON.stringify(user)
   }
@@ -16,7 +16,7 @@ import Database from './Database'
     if (!Number.isInteger(id))
       return null
 
-    const article = Database.executeTransaction(Article, id)
+    const article = DAO.fetch(Article, id)
 
     return JSON.stringify(article)
   }
@@ -27,10 +27,12 @@ import Database from './Database'
 @Advised()
 export default class Service {
   getUser({id, name}) {
-    return Database.executeTransaction(User, id, name)
+    //console.log('getUser')
+    return DAO.fetch(User, id, name)
   }
 
   getArticle({id}) {
-    return Database.executeTransaction(Article, id)
+    //console.log('getArticle')
+    return DAO.fetch(Article, id)
   }
 }
